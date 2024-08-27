@@ -8,6 +8,7 @@ class Cores extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Cores',
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }

@@ -1,43 +1,71 @@
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
-migrate_working_dir/
-
-# IntelliJ related
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
-
-# Flutter/Dart/Pub related
-**/doc/api/
+# Flutter related files
 **/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/Flutter.podspec
+**/ios/ServiceDefinitions.json
+**/ios/Runner.xcworkspace/
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/GeneratedPluginRegistrant.*
 
-# Symbolication related
-app.*.symbols
+# Miscellaneous
+**/.idea
+**/.vscode
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.flutter-versions
+**/.dart_tool/
+**/.packages
+**/build/
+**/.ds_store
+**/example/android/local.properties
+**/ios/.generated
+**/pubspec.lock
+**/.fvm/
+**/.metadata
+**/.android/
+**/android/app/debug.keystore
+**/flutter_export_environment.sh
+**/flutter_export_environment.bat
+**/packages/
+**/coverage/
 
-# Obfuscation related
-app.*.map.json
+# Mac related files
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Android related files
+**/android/.gradle/
+**/android/.idea/
+**/android/local.properties
+**/android/app/build/
+**/android/gradle/
+**/android/app/src/main/assets/flutter_assets/
+
+# iOS related files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/Flutter.podspec
+
+# Web related files
+**/web/.dart_tool/
+**/web/build/
+
+# Windows related files
+**/windows/.vs/
+**/windows/CMakeLists.txt.user
+**/windows/.idea/
+**/windows/build/
+
+# Linux related files
+**/linux/.vs/
+**/linux/CMakeLists.txt.user
+**/linux/.idea/
+**/linux/build/
+
+# Generated files
+**/flutter_export_environment.sh
+**/flutter_export_environment.bat
