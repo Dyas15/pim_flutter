@@ -42,39 +42,29 @@ class _HomeState extends State<Home> {
 
   int opcaoAtual = 0;
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: opcoesCorFundo[opcaoAtual],
-      appBar: AppBar(
-        title: const Text('App com flutter :)'),
-        backgroundColor: opcoesCorBarra[opcaoAtual],
-        centerTitle: true,
-      ),
-      body: Center(
+      appBar: AppBar(title: Text('Login')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              cores[opcaoAtual],
-              style: TextStyle(fontSize: 50, color: opcoesCorTexto[opcaoAtual]),
+            TextField(
+              decoration: InputDecoration(labelText: 'Usuário'),
             ),
-            const SizedBox(height: 20),
+            TextField(
+              decoration: InputDecoration(labelText: 'Senha'),
+              obscureText: true,
+            ),
+            SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  opcaoAtual = opcaoAtual < opcoesCorBarra.length - 1 ? ++opcaoAtual : 0;
-                });
+                // lógica de autenticação
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: opcoesCorTexto[opcaoAtual],
-                foregroundColor: Colors.white
-              ),
-              child: const Text(
-                "Trocar cor",
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Text('Entrar'),
             ),
           ],
         ),
