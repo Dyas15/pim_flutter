@@ -8,27 +8,44 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      backgroundColor: Color.fromRGBO(4, 56, 63, 1),
+      appBar: AppBar(
+        title: Text('DevWorld'),
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(4, 56, 63, 1),
+        foregroundColor: Colors.white,
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              decoration: InputDecoration(labelText: 'Usuário'),
+              decoration: InputDecoration(
+                  labelText: 'Usuário',
+                  labelStyle: TextStyle(color: Colors.white),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20))),
+              style: TextStyle(color: Colors.white),
             ),
             TextField(
-              decoration: InputDecoration(labelText: 'Senha'),
+              decoration: InputDecoration(
+                  labelText: 'Senha',
+                  labelStyle: TextStyle(color: Colors.white),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(20))),
+              style: TextStyle(color: Colors.white),
               obscureText: true,
             ),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // lógica de autenticação
+                print("Entrou");
               },
               child: Text('Entrar'),
             ),
