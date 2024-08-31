@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste/controllers/tema_controller.dart';
 import 'package:teste/widgets/home.dart';
 
 class VidentApp extends StatelessWidget {
@@ -6,10 +7,15 @@ class VidentApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Vidente",
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-    );
+    return AnimatedBuilder(
+        animation: TemaController.instancia,
+        builder: (context, child) {
+          return MaterialApp(
+            title: "Vidente",
+            theme: TemaController.instancia.usarTemaEscuro ? ThemeData.dark() : ThemeData.light(),
+            debugShowCheckedModeBanner: false,
+            home: Home(),
+          );
+        });
   }
 }
