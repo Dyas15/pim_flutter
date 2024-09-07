@@ -16,7 +16,7 @@ class _HomeState extends State<Home> {
         title: Text('DevWorld'),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(4, 56, 63, 1),
-        foregroundColor: Colors.white,
+        titleTextStyle: TextStyle(color: Colors.white),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
                   labelStyle: TextStyle(color: Colors.white),
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20))),
+                      )),
               style: TextStyle(color: Colors.white),
             ),
             TextField(
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                   labelStyle: TextStyle(color: Colors.white),
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(20))),
+                      )),
               style: TextStyle(color: Colors.white),
               obscureText: true,
             ),
