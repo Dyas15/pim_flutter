@@ -48,7 +48,10 @@ class _HomeState extends State<Home> {
                 print("Entrou");
               },
               child: Text('Entrar'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Color.fromRGBO(4, 56, 63, 1),
             ),
+            )
           ],
         ),
       ),
