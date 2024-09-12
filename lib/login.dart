@@ -8,61 +8,83 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _mostrarOlinho = true;
+
+  void _olinho() {
+    setState(() {
+      _mostrarOlinho = !_mostrarOlinho;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(13.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('images/logo_pequena.png', fit: BoxFit.fill),
-            const TextField(
+             TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                prefixIconColor: Colors.white,
+                prefixIcon: const Icon(Icons.person),
+                prefixIconColor: const Color.fromRGBO(4, 56, 63, 1),
                 labelText: 'Usuário',
-                labelStyle: TextStyle(color: Colors.white),
-                border: OutlineInputBorder(),
+                labelStyle: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50)
+                ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(4, 56, 63, 1),
                     width: 2.0,
                   ),
                 ),
               ),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
             ),
             const Padding(padding: EdgeInsets.all(10)),
-            const TextField(
+            TextField(
+              obscureText: _mostrarOlinho,
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock),
-                prefixIconColor: Colors.white,
+                prefixIcon: const Icon(Icons.lock, color: Color.fromRGBO(4, 56, 63, 1)),
                 labelText: 'Senha',
-                labelStyle: TextStyle(color: Colors.white),
-                border: OutlineInputBorder(),
+                labelStyle: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.white,
-                    width: 2.0
-                  )
-                )
+                  borderRadius: BorderRadius.circular(50),
+                  borderSide: const BorderSide(
+                    color: Color.fromRGBO(4, 56, 63, 1),
+                    width: 2.0,
+                  ),
+                ),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    _mostrarOlinho ? Icons.visibility : Icons.visibility_off,
+                    color: const Color.fromRGBO(4, 56, 63, 1),
+                  ),
+                  onPressed: _olinho,
+                ),
               ),
-              style: TextStyle(color: Colors.white),
-              obscureText: true,
+              style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  foregroundColor: const Color.fromRGBO(4, 56, 63, 1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  ),
-                  fixedSize: const Size(100, 60)),
-              child: const Text('Entrar'),
+                backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(32.0),
+                ),
+                fixedSize: const Size(200, 60),
+              ),
+              child: const Text('Entrar', style: TextStyle(fontSize: 19),),
               onPressed: () {
-                print("oi");
+                print("Olá");
               },
             ),
           ],

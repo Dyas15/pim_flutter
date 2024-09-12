@@ -4,4 +4,3 @@ import 'package:teste/splash.dart';
 void main() {
   runApp(const TelaSplash());
 }
-

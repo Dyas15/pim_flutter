@@ -7,13 +7,10 @@ class TelaSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Diogo Farms',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TelaSplashInicial(),
+      home: TelaSplashInicial(),
     );
   }
 }
