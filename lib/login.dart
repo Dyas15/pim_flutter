@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:teste/functions/trocarPagina.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -72,6 +73,13 @@ class _LoginState extends State<Login> {
               ),
               style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
             ),
+            const Padding(padding: EdgeInsets.all(4)),
+            GestureDetector(
+              onTap: () {
+                trocarPagina(context, 'forgot');
+              },
+              child: const Text('Esqueci a senha!',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
+            ),
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -86,6 +94,13 @@ class _LoginState extends State<Login> {
               onPressed: () {
                 print("Olá");
               },
+            ),
+            const Padding(padding: EdgeInsets.all(4)),
+            GestureDetector(
+              onTap: () {
+                trocarPagina(context, 'register');
+              },
+              child: const Text('Novo aqui? Se cadastre!', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
             ),
           ],
         ),

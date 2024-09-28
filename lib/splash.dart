@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'login.dart';
+import 'login.dart'; // Certifique-se de importar suas telas adequadamente
 
 class TelaSplash extends StatelessWidget {
   const TelaSplash({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Diogo Farms',
-      debugShowCheckedModeBanner: false,
-      home: TelaSplashInicial(),
-    );
+    return const TelaSplashInicial();
   }
 }
 
@@ -45,7 +41,7 @@ class EstadoTelaSplashInicial extends State<TelaSplashInicial> {
     Navigator.of(context).pushReplacement(
       PageTransition(
         type: PageTransitionType.fade,
-        child: const Login(),
+        child: const Login(), // Substitui pela tela de login
         duration: const Duration(milliseconds: 1000),
       ),
     );
