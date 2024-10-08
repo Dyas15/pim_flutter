@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'login.dart'; // Certifique-se de importar suas telas adequadamente
+import 'package:teste/login.dart';
 
 class TelaSplash extends StatelessWidget {
   const TelaSplash({super.key});
@@ -25,7 +25,7 @@ class EstadoTelaSplashInicial extends State<TelaSplashInicial> {
   void initState() {
     super.initState();
     _animarLogo();
-    _navegarParaLogin();
+    _navegarParaPagina();
   }
 
   void _animarLogo() {
@@ -36,12 +36,12 @@ class EstadoTelaSplashInicial extends State<TelaSplashInicial> {
     });
   }
 
-  void _navegarParaLogin() async {
+  void _navegarParaPagina() async {
     await Future.delayed(const Duration(seconds: 3));
     Navigator.of(context).pushReplacement(
       PageTransition(
         type: PageTransitionType.fade,
-        child: const Login(), // Substitui pela tela de login
+        child: const Login(),
         duration: const Duration(milliseconds: 1000),
       ),
     );

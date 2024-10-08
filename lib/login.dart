@@ -76,9 +76,9 @@ class _LoginState extends State<Login> {
             const Padding(padding: EdgeInsets.all(4)),
             GestureDetector(
               onTap: () {
-                trocarPagina(context, 'forgot');
+                trocarPagina(context, 'esqueci');
               },
-              child: const Text('Esqueci a senha!',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
+              child: const Text('Esqueceu a senha?',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
@@ -98,7 +98,7 @@ class _LoginState extends State<Login> {
             const Padding(padding: EdgeInsets.all(4)),
             GestureDetector(
               onTap: () {
-                trocarPagina(context, 'register');
+                trocarPagina(context, 'Inicio');
               },
               child: const Text('Novo aqui? Se cadastre!', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
             ),

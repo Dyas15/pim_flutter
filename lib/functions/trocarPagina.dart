@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teste/forgotPassword.dart';
-import 'package:teste/login.dart';
-import 'package:teste/register.dart';
+import 'package:teste/EsqueciASenha.dart';
+import 'package:teste/Login.dart';
+import 'package:teste/Cadastro.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Navigator.push(
@@ -9,12 +9,12 @@ void trocarPagina(BuildContext context, String pagina) {
     PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) {
         switch (pagina) {
-          case 'register':
-            return const RegisterScreen();
+          case 'registro':
+            return const TelaDeCadastro();
           case 'login':
             return const Login();
-          case 'forgot':
-            return const Forgotpassword();
+          case 'esqueci':
+            return const EsqueciASenha();
           default:
             return const Scaffold(
               body: Center(child: Text('Página não encontrada')),
@@ -22,11 +22,11 @@ void trocarPagina(BuildContext context, String pagina) {
         }
       },
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = 0.0;
-        var end = 1.0;
+        var inicio = 0.0;
+        var fim = 1.0;
         var curve = Curves.easeInOut;
 
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween = Tween(begin: inicio, end: fim).chain(CurveTween(curve: curve));
         var fadeAnimation = animation.drive(tween);
 
         return FadeTransition(

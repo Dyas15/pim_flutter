@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:teste/forgotPassword.dart';
+import 'package:teste/EsqueciASenha.dart';
+import 'package:teste/Inicio.dart';
 import 'package:teste/splash.dart';
-import 'package:teste/login.dart';  // Certifique-se de que está importando suas telas
-import 'package:teste/register.dart';
+import 'package:teste/Login.dart';
+import 'package:teste/Cadastro.dart';
 
 void main() {
-  runApp(const diogoFarms());
+  runApp(const DiogoFarms());
 }
 
-class diogoFarms extends StatelessWidget {
-  const diogoFarms({super.key});
+class DiogoFarms extends StatelessWidget {
+  const DiogoFarms({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +21,9 @@ class diogoFarms extends StatelessWidget {
       routes: {
         '/': (context) => const TelaSplash(),
         '/login': (context) => const Login(),
-        '/register': (context) => const RegisterScreen(),
-        '/forgot': (context) => const Forgotpassword()
+        '/registro': (context) => const TelaDeCadastro(),
+        '/esqueci': (context) => const EsqueciASenha(),
+        '/Inicio': (context) => const Inicio()
       },
     );
   }

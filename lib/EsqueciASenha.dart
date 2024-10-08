@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Forgotpassword extends StatelessWidget {
-  const Forgotpassword({super.key});
+class EsqueciASenha extends StatelessWidget {
+  const EsqueciASenha({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Forgotpassword extends StatelessWidget {
             SizedBox(
               width: 200,
               height: 200,
-              child: Image.asset('images/Cadeado3.png'),
+              child: Image.asset('images/Cadeado4.png'),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             const Text(
@@ -35,7 +35,7 @@ class Forgotpassword extends StatelessWidget {
             ),
             const Padding(padding: EdgeInsets.all(10)),
             const Text(
-              'Por favor, informe o E-mail associado a sua conta que enviaremos um link para o mesmo com as instruções para a restauração de sua senha.',
+              'Por favor, informe o E-mail associado a sua conta que enviaremos um link com as instruções para a restauração de sua senha.',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400
