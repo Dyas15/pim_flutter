@@ -3,7 +3,7 @@ import 'package:teste/EsqueciASenha.dart';
 import 'package:teste/Inicio.dart';
 import 'package:teste/splash.dart';
 import 'package:teste/Login.dart';
-import 'package:teste/Cadastro.dart';
+import 'package:teste/cadastro.dart';
 
 void main() {
   runApp(const DiogoFarms());
@@ -23,7 +23,7 @@ class DiogoFarms extends StatelessWidget {
         '/login': (context) => const Login(),
         '/registro': (context) => const TelaDeCadastro(),
         '/esqueci': (context) => const EsqueciASenha(),
-        '/Inicio': (context) => const Inicio()
+        '/inicio': (context) => const Inicio()
       },
     );
   }

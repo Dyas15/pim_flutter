@@ -96,12 +96,6 @@ class _LoginState extends State<Login> {
               },
             ),
             const Padding(padding: EdgeInsets.all(4)),
-            GestureDetector(
-              onTap: () {
-                trocarPagina(context, 'Inicio');
-              },
-              child: const Text('Novo aqui? Se cadastre!', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
-            ),
           ],
         ),
       ),

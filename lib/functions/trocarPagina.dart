@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teste/EsqueciASenha.dart';
 import 'package:teste/Login.dart';
-import 'package:teste/Cadastro.dart';
+import 'package:teste/cadastro.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Navigator.push(
