@@ -48,7 +48,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Nome Completo',
-                labelStyle: TextStyle(color: Colors.white70),
+                labelStyle: TextStyle(color: Colors.white),
                 filled: true,
                 fillColor: Colors.white10,
                 border: OutlineInputBorder(
@@ -68,7 +68,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Email',
-                labelStyle: TextStyle(color: Colors.white70),
+                labelStyle: TextStyle(color: Colors.white),
                 filled: true,
                 fillColor: Colors.white10,
                 border: OutlineInputBorder(
@@ -89,7 +89,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
               obscureText: _mostrarSenha,
               decoration: InputDecoration(
                 labelText: 'Senha',
-                labelStyle: const TextStyle(color: Colors.white70),
+                labelStyle: const TextStyle(color: Colors.white),
                 filled: true,
                 fillColor: Colors.white10,
                 border: const OutlineInputBorder(
@@ -104,7 +104,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 suffixIcon: IconButton(
                   icon: Icon(
                     _mostrarSenha ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.white70,
+                    color: Colors.white,
                   ),
                   onPressed: _toggleSenha,
                 ),
@@ -117,7 +117,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
               obscureText: _mostrarConfirmarSenha,
               decoration: InputDecoration(
                 labelText: 'Confirmar Senha',
-                labelStyle: const TextStyle(color: Colors.white70),
+                labelStyle: const TextStyle(color: Colors.white),
                 filled: true,
                 fillColor: Colors.white10,
                 border: const OutlineInputBorder(
@@ -132,7 +132,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 suffixIcon: IconButton(
                   icon: Icon(
                     _mostrarConfirmarSenha ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.white70,
+                    color: Colors.white,
                   ),
                   onPressed: _toggleConfirmarSenha,
                 ),

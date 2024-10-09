@@ -23,7 +23,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: corPadrao,
-      body: Center(  // Centralizando o conteúdo verticalmente
+      body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(13.0),
           child: Column(
