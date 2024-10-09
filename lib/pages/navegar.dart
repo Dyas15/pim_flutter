@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:teste/functions/trocarPagina.dart';
 
-class Inicio extends StatefulWidget {
-  const Inicio({super.key});
+class Navegar extends StatefulWidget {
+  const Navegar({super.key});
 
   @override
-  State<Inicio> createState() => _InicioState();
+  State<Navegar> createState() => _NavegarState();
 }
 
-class _InicioState extends State<Inicio> {
+class _NavegarState extends State<Navegar> {
 static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
 
   @override

@@ -7,8 +7,8 @@ class EsqueciASenha extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
-        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color:Color.fromRGBO(4, 56, 63, 1)),
       ),
       body: Container(
         padding: const EdgeInsets.only(

@@ -30,13 +30,9 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
         backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
         iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
-        title: const Text(
-          'Registro',
-          style: TextStyle(color: Colors.white),
-        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(13.0),
         child: ListView(
           children: [
             const Text(
@@ -48,7 +44,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 65),
             const TextField(
               decoration: InputDecoration(
                 labelText: 'Nome Completo',

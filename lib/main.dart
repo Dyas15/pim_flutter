@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:teste/EsqueciASenha.dart';
-import 'package:teste/Inicio.dart';
-import 'package:teste/splash.dart';
-import 'package:teste/Login.dart';
-import 'package:teste/cadastro.dart';
+import 'package:teste/pages/esqueci-a-senha.dart';
+import 'package:teste/pages/inicio.dart';
+import 'package:teste/pages/navegar.dart';
+import 'package:teste/pages/splash.dart';
+import 'package:teste/pages/Login.dart';
+import 'package:teste/pages/cadastro.dart';
 
 void main() {
   runApp(const DiogoFarms());
@@ -22,7 +23,8 @@ class DiogoFarms extends StatelessWidget {
         '/': (context) => const TelaSplash(),
         '/login': (context) => const Login(),
         '/registro': (context) => const TelaDeCadastro(),
-        '/esqueci': (context) => const EsqueciASenha(),
+        '/esqueci-a-senha': (context) => const EsqueciASenha(),
+        '/navegar': (context) => const Navegar(),
         '/inicio': (context) => const Inicio()
       },
     );

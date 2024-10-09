@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:teste/Inicio.dart';
+import 'package:teste/pages/navegar.dart';
 
 class TelaSplash extends StatelessWidget {
   const TelaSplash({super.key});
@@ -41,7 +41,7 @@ class EstadoTelaSplashInicial extends State<TelaSplashInicial> {
     Navigator.of(context).pushReplacement(
       PageTransition(
         type: PageTransitionType.fade,
-        child: const Inicio(),
+        child: const Navegar(),
         duration: const Duration(milliseconds: 1000),
       ),
     );

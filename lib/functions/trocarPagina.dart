@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:teste/EsqueciASenha.dart';
-import 'package:teste/Login.dart';
-import 'package:teste/cadastro.dart';
+import 'package:teste/pages/esqueci-a-senha.dart';
+import 'package:teste/pages/Login.dart';
+import 'package:teste/pages/cadastro.dart';
+import 'package:teste/pages/inicio.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Navigator.push(
@@ -15,6 +16,8 @@ void trocarPagina(BuildContext context, String pagina) {
             return const Login();
           case 'esqueci':
             return const EsqueciASenha();
+          case 'inicio':
+            return const Inicio();
           default:
             return const Scaffold(
               body: Center(child: Text('Página não encontrada')),
