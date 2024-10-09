@@ -10,6 +10,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _mostrarOlinho = true;
+  static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
+  static const Color corBranca = Colors.white;
 
   void _olinho() {
     setState(() {
@@ -20,7 +22,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: corPadrao,
       body: Padding(
         padding: const EdgeInsets.all(13.0),
         child: Column(
@@ -30,61 +32,61 @@ class _LoginState extends State<Login> {
              TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.person),
-                prefixIconColor: const Color.fromRGBO(4, 56, 63, 1),
+                prefixIconColor: corBranca,
                 labelText: 'Usuário',
-                labelStyle: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+                labelStyle: const TextStyle(color: corBranca),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50)
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
-                    color: Color.fromRGBO(4, 56, 63, 1),
+                    color: corBranca,
                     width: 2.0,
                   ),
                 ),
               ),
-              style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+              style: const TextStyle(color: corBranca),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             TextField(
               obscureText: _mostrarOlinho,
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock, color: Color.fromRGBO(4, 56, 63, 1)),
+                prefixIcon: const Icon(Icons.lock, color: corBranca),
                 labelText: 'Senha',
-                labelStyle: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+                labelStyle: const TextStyle(color: corBranca),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
-                    color: Color.fromRGBO(4, 56, 63, 1),
+                    color: corBranca,
                     width: 2.0,
                   ),
                 ),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _mostrarOlinho ? Icons.visibility : Icons.visibility_off,
-                    color: const Color.fromRGBO(4, 56, 63, 1),
+                    color: corBranca,
                   ),
                   onPressed: _olinho,
                 ),
               ),
-              style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+              style: const TextStyle(color: corBranca),
             ),
             const Padding(padding: EdgeInsets.all(4)),
             GestureDetector(
               onTap: () {
                 trocarPagina(context, 'esqueci');
               },
-              child: const Text('Esqueceu a senha?',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
+              child: const Text('Esqueceu a senha?',style: TextStyle(color: corBranca),),
             ),
             const SizedBox(height: 40),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
-                foregroundColor: Colors.white,
+                backgroundColor: corBranca,
+                foregroundColor: corPadrao,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),
                 ),

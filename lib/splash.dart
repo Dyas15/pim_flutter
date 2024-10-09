@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:teste/Inicio.dart';
-import 'package:teste/login.dart';
 
 class TelaSplash extends StatelessWidget {
   const TelaSplash({super.key});

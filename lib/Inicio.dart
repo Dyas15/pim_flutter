@@ -9,10 +9,12 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
+static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
+      backgroundColor: corPadrao,
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
@@ -103,7 +105,7 @@ class _InicioState extends State<Inicio> {
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(4, 56, 63, 1),
+                              color: corPadrao,
                             ),
                           ),
                         ),
