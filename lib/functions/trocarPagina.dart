@@ -1,29 +1,43 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:teste/pages/esqueci-a-senha.dart';
 import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
+import 'package:teste/pages/esqueci-a-senha.dart';
 import 'package:teste/pages/inicio.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
+  Widget page;
+
+  switch (pagina) {
+    case 'registro':
+      page = const TelaDeCadastro();
+      break;
+    case 'login':
+      page = const Login();
+      break;
+    case 'esqueci':
+      page = const EsqueciASenha();
+      break;
+    case 'inicio':
+      Navigator.of(context).pushAndRemoveUntil(
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => const Inicio()
+        ),
+        (Route<dynamic> route) => false,
+      );
+      return;
+    default:
+      page = const Scaffold(
+        body: Center(child: Text('Página não encontrada')),
+      );
+      break;
+  }
+
   Navigator.push(
     context,
     PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        switch (pagina) {
-          case 'registro':
-            return const TelaDeCadastro();
-          case 'login':
-            return const Login();
-          case 'esqueci':
-            return const EsqueciASenha();
-          case 'inicio':
-            return const Inicio();
-          default:
-            return const Scaffold(
-              body: Center(child: Text('Página não encontrada')),
-            );
-        }
-      },
+      pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var inicio = 0.0;
         var fim = 1.0;
@@ -37,7 +51,7 @@ void trocarPagina(BuildContext context, String pagina) {
           child: child,
         );
       },
-      transitionDuration: const Duration(milliseconds: 150),
+      transitionDuration: const Duration(milliseconds: 350),
     ),
   );
 }

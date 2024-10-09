@@ -10,6 +10,11 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   @override
   Widget build(BuildContext context) {
-    return Text('Oi');
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Diogo Farms'),
+        centerTitle: true,
+      ),
+    );
   }
 }
