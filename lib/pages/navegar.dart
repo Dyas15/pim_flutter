@@ -69,9 +69,9 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                         child: Container(
                           padding: const EdgeInsets.all(20.0),
                           decoration: const BoxDecoration(
-                            color: Colors.transparent,
+                            color: Colors.white,
                             borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(50),
+                              topRight: Radius.circular(50),
                             ),
                           ),
                           child: const Text(
@@ -80,7 +80,7 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Color.fromRGBO(4, 56, 63, 1),
                             ),
                           ),
                         ),
@@ -94,7 +94,7 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                         child: Container(
                           padding: const EdgeInsets.all(20.0),
                           decoration: const BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.transparent,
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(50),
                             ),
@@ -105,7 +105,7 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
-                              color: corPadrao,
+                              color: Colors.white,
                             ),
                           ),
                         ),

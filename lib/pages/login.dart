@@ -12,6 +12,7 @@ class _LoginState extends State<Login> {
   bool _mostrarOlinho = true;
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
   static const Color corBranca = Colors.white;
+  
 
   void _olinho() {
     setState(() {
@@ -22,6 +23,11 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          iconTheme: const IconThemeData(color:Colors.white),
+          elevation: 0,
+          ),
       backgroundColor: corPadrao,
       body: Center(
         child: SingleChildScrollView(

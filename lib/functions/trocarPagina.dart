@@ -20,13 +20,14 @@ void trocarPagina(BuildContext context, String pagina) {
       page = const EsqueciASenha();
       break;
     case 'inicio':
-      Navigator.of(context).pushAndRemoveUntil(
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const Inicio()
-        ),
-        (Route<dynamic> route) => false,
-      );
-      return;
+      // Navigator.of(context).pushAndRemoveUntil(
+      //   PageRouteBuilder(
+      //     pageBuilder: (context, animation, secondaryAnimation) => const Inicio()
+      //   ),
+      //   (Route<dynamic> route) => false,
+      // );
+     // return;
+     page = const Inicio();
     default:
       page = const Scaffold(
         body: Center(child: Text('Página não encontrada')),

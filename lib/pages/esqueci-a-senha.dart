@@ -7,8 +7,8 @@ class EsqueciASenha extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        iconTheme: const IconThemeData(color:Color.fromRGBO(4, 56, 63, 1)),
+        backgroundColor: Color.fromRGBO(4, 56, 63, 1),
+        iconTheme: const IconThemeData(color:Colors.white),
         elevation: 0,
       ),
       body: Container(
@@ -17,20 +17,21 @@ class EsqueciASenha extends StatelessWidget {
           left: 40,
           right: 40
         ),
-        color: Colors.white,
+        color: Color.fromRGBO(4, 56, 63, 1),
         child: ListView(
           children: <Widget> [
             SizedBox(
               width: 200,
               height: 200,
-              child: Image.asset('images/Cadeado4.png'),
+              child: Image.asset('images/Cadeado.branco.png'),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             const Text(
               'Esqueceu sua senha?',
               style: TextStyle(
                 fontSize: 32,
-                fontWeight: FontWeight.w500
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -39,7 +40,8 @@ class EsqueciASenha extends StatelessWidget {
               'Por favor, informe o E-mail associado a sua conta que enviaremos um link com as instruções para a restauração de sua senha.',
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
+                color: Colors.white,
               ),
               textAlign: TextAlign.center,
             ),
@@ -48,27 +50,27 @@ class EsqueciASenha extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email),
-                prefixIconColor: const Color.fromRGBO(4, 56, 63, 1),
+                prefixIconColor:  Colors.white,
                 labelText: 'E-mail',
-                labelStyle: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+                labelStyle: const TextStyle(color: Colors.white),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50)
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
-                    color: Color.fromRGBO(4, 56, 63, 1),
+                    color: Colors.white,
                     width: 2.0,
                   ),
                 ),
               ),
-              style: const TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),
+              style: const TextStyle(color: Colors.white),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
-                foregroundColor: Colors.white,
+                backgroundColor: Colors.white,
+                foregroundColor: const Color.fromRGBO(4, 56, 63, 1),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),
                 ),
