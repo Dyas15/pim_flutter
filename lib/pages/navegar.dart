@@ -64,6 +64,25 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
+                          trocarPagina(context, 'registro');
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(20.0),
+                          child: const Text(
+                            'Cadastrar',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
                           trocarPagina(context, 'login');
                         },
                         child: Container(
@@ -71,7 +90,7 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(50),
+                              topLeft: Radius.circular(50),
                             ),
                           ),
                           child: const Text(
@@ -81,31 +100,6 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
                               color: Color.fromRGBO(4, 56, 63, 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          trocarPagina(context, 'registro');
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(20.0),
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(50),
-                            ),
-                          ),
-                          child: const Text(
-                            'Cadastrar',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
                             ),
                           ),
                         ),

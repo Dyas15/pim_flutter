@@ -7,7 +7,7 @@ class EsqueciASenha extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(4, 56, 63, 1),
+        backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
         iconTheme: const IconThemeData(color:Colors.white),
         elevation: 0,
       ),
@@ -17,7 +17,7 @@ class EsqueciASenha extends StatelessWidget {
           left: 40,
           right: 40
         ),
-        color: Color.fromRGBO(4, 56, 63, 1),
+        color: const Color.fromRGBO(4, 56, 63, 1),
         child: ListView(
           children: <Widget> [
             SizedBox(
