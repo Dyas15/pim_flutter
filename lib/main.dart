@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
-import 'package:teste/pages/inicio.dart';
+import 'package:teste/pages/produtos.dart';
 import 'package:teste/pages/navegar.dart';
 import 'package:teste/pages/splash.dart';
 import 'package:teste/pages/Login.dart';
@@ -25,7 +25,7 @@ class DiogoFarms extends StatelessWidget {
         '/registro': (context) => const TelaDeCadastro(),
         '/esqueci-a-senha': (context) => const EsqueciASenha(),
         '/navegar': (context) => const Navegar(),
-        '/inicio': (context) => const Inicio()
+        '/produtos': (context) => const Produtos()
       },
     );
   }

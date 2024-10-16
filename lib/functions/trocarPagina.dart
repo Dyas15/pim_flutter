@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
-import 'package:teste/pages/inicio.dart';
+import 'package:teste/pages/produtos.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Widget page;
@@ -19,15 +19,14 @@ void trocarPagina(BuildContext context, String pagina) {
     case 'esqueci':
       page = const EsqueciASenha();
       break;
-    case 'inicio':
-      // Navigator.of(context).pushAndRemoveUntil(
-      //   PageRouteBuilder(
-      //     pageBuilder: (context, animation, secondaryAnimation) => const Inicio()
-      //   ),
-      //   (Route<dynamic> route) => false,
-      // );
-     // return;
-     page = const Inicio();
+    case 'produtos':
+      Navigator.of(context).pushAndRemoveUntil(
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => const Produtos()
+        ),
+        (Route<dynamic> route) => false,
+      );
+     return;
     default:
       page = const Scaffold(
         body: Center(child: Text('Página não encontrada')),

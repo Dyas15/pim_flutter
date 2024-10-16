@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
 
   void _validarFormulario() {
     if (_formKey.currentState!.validate()) {
-      trocarPagina(context, 'inicio');
+      trocarPagina(context, 'produtos');
     }
   }
 
