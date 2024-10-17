@@ -1,10 +1,9 @@
 
-
 import 'package:flutter/material.dart';
 import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
-import 'package:teste/pages/produtos.dart';
+import 'package:teste/pages/menu.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Widget page;
@@ -19,10 +18,10 @@ void trocarPagina(BuildContext context, String pagina) {
     case 'esqueci':
       page = const EsqueciASenha();
       break;
-    case 'produtos':
+    case 'menu':
       Navigator.of(context).pushAndRemoveUntil(
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const Produtos()
+          pageBuilder: (context, animation, secondaryAnimation) => const Menu()
         ),
         (Route<dynamic> route) => false,
       );
