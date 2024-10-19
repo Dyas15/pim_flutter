@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
 import 'package:teste/pages/menu.dart';
+import 'package:teste/pages/perfil.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Widget page;
@@ -18,14 +18,25 @@ void trocarPagina(BuildContext context, String pagina) {
     case 'esqueci':
       page = const EsqueciASenha();
       break;
+    case 'perfil':
+      page = const Perfil();
+      break;
+    case 'sair':
+      Navigator.of(context).pushAndRemoveUntil(
+        PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const Login()),
+        (Route<dynamic> route) => false,
+      );
+      return;
     case 'menu':
       Navigator.of(context).pushAndRemoveUntil(
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => const Menu()
-        ),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const Menu()),
         (Route<dynamic> route) => false,
       );
-     return;
+      return;
     default:
       page = const Scaffold(
         body: Center(child: Text('Página não encontrada')),
@@ -42,7 +53,8 @@ void trocarPagina(BuildContext context, String pagina) {
         var fim = 1.0;
         var curve = Curves.easeInOut;
 
-        var tween = Tween(begin: inicio, end: fim).chain(CurveTween(curve: curve));
+        var tween =
+            Tween(begin: inicio, end: fim).chain(CurveTween(curve: curve));
         var fadeAnimation = animation.drive(tween);
 
         return FadeTransition(

@@ -4,7 +4,6 @@ import 'package:teste/pages/carrinho.dart';
 import 'package:teste/pages/configuracao.dart';
 import 'package:teste/pages/pesquisa.dart';
 import 'package:teste/pages/produtos.dart';
-import 'package:teste/pages/usuario.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -27,7 +26,6 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
       body: PageView(
         controller: _pageController,
         onPageChanged: (index) {
@@ -39,8 +37,7 @@ class _MenuState extends State<Menu> {
           Produtos(),
           Pesquisa(),
           Carrinho(),
-          Configuracao(),
-          Usuario()
+          Configuracao()
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
@@ -49,7 +46,6 @@ class _MenuState extends State<Menu> {
           Icon(Icons.search_sharp),
           Icon(Icons.shopping_cart),
           Icon(Icons.settings_sharp),
-          Icon(Icons.person),
         ],
         index: _paginaAtual,
         height: 50,
