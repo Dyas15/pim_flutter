@@ -12,33 +12,61 @@ class Menu extends StatefulWidget {
   State<Menu> createState() => _MenuState();
 }
 
-class _MenuState extends State<Menu> {
+class _MenuState extends State<Menu> with TickerProviderStateMixin {
   final PageController _pageController = PageController();
   int _paginaAtual = 0;
+  late AnimationController _animacaoController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animacaoController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _animacaoController,
+      curve: Curves.easeInOut,
+    );
+  }
 
   void _trocarPagina(int index) {
     setState(() {
       _paginaAtual = index;
-      _pageController.jumpToPage(index);
     });
+    _animacaoController.forward(from: 0.0);
+    _pageController.jumpToPage(index);
+  }
+
+  @override
+  void dispose() {
+    _animacaoController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _paginaAtual = index;
-          });
-        },
-        children: const [
-          Produtos(),
-          Pesquisa(),
-          Carrinho(),
-          Configuracao()
-        ],
+      body: Container(
+        color: const Color.fromRGBO(4, 56, 63, 1),
+        child: FadeTransition(
+          opacity: _animation,
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              setState(() {
+                _paginaAtual = index;
+              });
+            },
+            children: const [
+              Produtos(),
+              Pesquisa(),
+              Carrinho(),
+              Configuracao(),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: CurvedNavigationBar(
         items: const [
@@ -48,8 +76,10 @@ class _MenuState extends State<Menu> {
           Icon(Icons.settings_sharp),
         ],
         index: _paginaAtual,
-        height: 50,
-        backgroundColor:const Color.fromRGBO(4, 56, 63, 1),
+        height: 55,
+        backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
         onTap: _trocarPagina,
       ),
     );

@@ -14,9 +14,7 @@ class DiogoFarms extends StatelessWidget {
       title: 'Diogo Farms',
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
-      routes: {
-        '/': (context) => const TelaSplash()
-      },
+      routes: {'/': (context) => const TelaSplash()},
     );
   }
 }

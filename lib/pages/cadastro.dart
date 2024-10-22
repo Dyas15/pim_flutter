@@ -18,7 +18,8 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
-  final TextEditingController _confirmarSenhaController = TextEditingController();
+  final TextEditingController _confirmarSenhaController =
+      TextEditingController();
 
   void _toggleSenha() {
     setState(() {
@@ -119,13 +120,11 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                     return 'Digite seu CPF';
                   }
                   String cpf = value.replaceAll(RegExp(r'[^\d]'), '');
-                  if(cpf.length != 11)
-                  {
+                  if (cpf.length != 11) {
                     return 'O CPF deve conter todos os números';
                   }
 
-                  if(validarCPF(cpf) == false)
-                  {
+                  if (validarCPF(cpf) == false) {
                     return 'Digite um CPF válido!';
                   }
 

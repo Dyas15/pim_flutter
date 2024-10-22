@@ -4,7 +4,6 @@ import 'package:teste/functions/trocarPagina.dart';
 class Configuracao extends StatelessWidget {
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
   static const Color corBranca = Colors.white;
-  static const Color corTextoCinza = Colors.grey;
 
   const Configuracao({super.key});
 
@@ -21,8 +20,7 @@ class Configuracao extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage(
-                      'images/logo_pequena.png'),
+                  backgroundImage: AssetImage('images/logo_pequena.png'),
                 ),
                 SizedBox(width: 15),
                 Column(
@@ -31,9 +29,9 @@ class Configuracao extends StatelessWidget {
                     Text(
                       'Admin da Silva',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 23,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: corBranca,
                       ),
                     ),
                   ],
@@ -52,7 +50,6 @@ class Configuracao extends StatelessWidget {
                     'Formas de pagamento', 'formas_pagamento'),
                 _opcoesConfiguracao(context, Icons.date_range,
                     'Histórico de compras', 'historico_compras'),
-                Divider(color: Colors.grey[800], thickness: 1),
                 _opcoesConfiguracao(
                     context, Icons.chat_bubble, 'Sobre Nós', 'sobre_nos'),
                 _opcoesConfiguracao(context, Icons.privacy_tip_rounded,
@@ -71,8 +68,8 @@ class Configuracao extends StatelessWidget {
   ListTile _opcoesConfiguracao(
       BuildContext context, IconData icon, String title, String page) {
     return ListTile(
-      leading: Icon(icon, color: Colors.white),
-      title: Text(title, style: const TextStyle(color: Colors.white)),
+      leading: Icon(icon, color: corBranca),
+      title: Text(title, style: const TextStyle(color: corBranca, fontSize: 18)),
       onTap: () {
         trocarPagina(context, page);
       },

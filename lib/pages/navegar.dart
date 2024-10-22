@@ -9,7 +9,7 @@ class Navegar extends StatefulWidget {
 }
 
 class _NavegarState extends State<Navegar> {
-static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
+  static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,8 @@ static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
                           ),
                         ),
                         TextSpan(
-                          text: '\nBem vindo ao Diogo Farms, onde o agronegócio e o desenvolvimento sustentável andam juntos!',
+                          text:
+                              '\nBem vindo ao Diogo Farms, onde o agronegócio e o desenvolvimento sustentável andam juntos!',
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white70,

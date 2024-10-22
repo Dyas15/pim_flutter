@@ -8,18 +8,14 @@ class EsqueciASenha extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
-        iconTheme: const IconThemeData(color:Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
       ),
       body: Container(
-        padding: const EdgeInsets.only(
-          top: 10,
-          left: 40,
-          right: 40
-        ),
+        padding: const EdgeInsets.only(top: 10, left: 40, right: 40),
         color: const Color.fromRGBO(4, 56, 63, 1),
         child: ListView(
-          children: <Widget> [
+          children: <Widget>[
             SizedBox(
               width: 200,
               height: 200,
@@ -46,16 +42,14 @@ class EsqueciASenha extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const Padding(padding: EdgeInsets.all(10)),
-            
             TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email),
-                prefixIconColor:  Colors.white,
+                prefixIconColor: Colors.white,
                 labelText: 'E-mail',
                 labelStyle: const TextStyle(color: Colors.white),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50)
-                ),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50),
                   borderSide: const BorderSide(
@@ -76,7 +70,10 @@ class EsqueciASenha extends StatelessWidget {
                 ),
                 fixedSize: const Size(200, 60),
               ),
-              child: const Text('Enviar', style: TextStyle(fontSize: 19),),
+              child: const Text(
+                'Enviar',
+                style: TextStyle(fontSize: 19),
+              ),
               onPressed: () {
                 print("Olá");
               },
