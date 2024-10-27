@@ -37,6 +37,8 @@ dependencies:
   br_validators: ^2.0.3
   flutter_masked_text2: ^0.9.1
   curved_navigation_bar: ^1.0.6
+  anim_search_bar: ^2.0.3
+  intl: ^0.19.0
 
 
 flutter_native_splash:

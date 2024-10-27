@@ -4,6 +4,11 @@ import 'package:teste/pages/carrinho.dart';
 import 'package:teste/pages/configuracao.dart';
 import 'package:teste/pages/pesquisa.dart';
 import 'package:teste/pages/produtos.dart';
+// ignore: depend_on_referenced_packages
+import "package:intl/intl.dart";
+
+import 'model/product.dart';
+import 'model/products_repository.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -61,7 +66,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
             },
             children: const [
               Produtos(),
-              Pesquisa(),
+              // Pesquisa(),
               Carrinho(),
               Configuracao(),
             ],
@@ -71,7 +76,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       bottomNavigationBar: CurvedNavigationBar(
         items: const [
           Icon(Icons.home),
-          Icon(Icons.search_sharp),
+          // Icon(Icons.search_sharp),
           Icon(Icons.shopping_cart),
           Icon(Icons.settings_sharp),
         ],
