@@ -2,13 +2,10 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:teste/pages/carrinho.dart';
 import 'package:teste/pages/configuracao.dart';
-import 'package:teste/pages/pesquisa.dart';
+//import 'package:teste/pages/pesquisa.dart';
 import 'package:teste/pages/produtos.dart';
-// ignore: depend_on_referenced_packages
-import "package:intl/intl.dart";
 
-import 'model/product.dart';
-import 'model/products_repository.dart';
+
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -18,32 +15,46 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> with TickerProviderStateMixin {
-  final PageController _pageController = PageController();
+  final PageController _pageController = PageController(initialPage: 0);
   int _paginaAtual = 0;
   late AnimationController _animacaoController;
   late Animation<double> _animation;
 
   @override
-  void initState() {
-    super.initState();
-    _animacaoController = AnimationController(
-      duration: const Duration(milliseconds: 300),
-      vsync: this,
-    );
-    _animation = CurvedAnimation(
-      parent: _animacaoController,
-      curve: Curves.easeInOut,
-    );
-  }
+void initState() {
+  super.initState();
+  _paginaAtual = 0;
+  _animacaoController = AnimationController(
+    duration: const Duration(milliseconds: 300),
+    vsync: this,
+  );
+  _animation = Tween<double>(begin: 1.0, end: 1.0).animate(_animacaoController);
+}
 
   void _trocarPagina(int index) {
+  // Verifica se está passando da última para a primeira página
+  if (_paginaAtual == _pageController.page!.round() && index == 0 && _paginaAtual == 2) {
+    // Navega para a primeira página sem "bugar"
+    _pageController.jumpToPage(0);
+  } 
+  // Verifica se está passando da primeira para a última página
+  else if (_paginaAtual == _pageController.page!.round() && index == 2 && _paginaAtual == 0) {
+    // Navega para a última página sem "bugar"
+    _pageController.jumpToPage(2);
+  } else {
+    // Para as transições normais
     setState(() {
       _paginaAtual = index;
     });
-    _animacaoController.forward(from: 0.0);
-    _pageController.jumpToPage(index);
+    _animacaoController.forward(from: 0.0).then((_) {
+      _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
   }
-
+}
   @override
   void dispose() {
     _animacaoController.dispose();
@@ -56,7 +67,7 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
       body: Container(
         color: const Color.fromRGBO(4, 56, 63, 1),
         child: FadeTransition(
-          opacity: _animation,
+          opacity: _animation ,
           child: PageView(
             controller: _pageController,
             onPageChanged: (index) {
