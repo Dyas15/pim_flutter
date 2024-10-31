@@ -4,6 +4,7 @@ import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
 import 'package:teste/pages/menu.dart';
 import 'package:teste/pages/perfil.dart';
+import 'package:teste/pages/sobrenos.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Widget page;
@@ -20,6 +21,9 @@ void trocarPagina(BuildContext context, String pagina) {
       break;
     case 'perfil':
       page = const Perfil();
+      break;
+      case 'sobre_nos':
+      page = const Sobre();
       break;
     case 'sair':
       Navigator.of(context).pushAndRemoveUntil(

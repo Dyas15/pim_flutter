@@ -17,9 +17,9 @@ class _ProdutosState extends State<Produtos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(4, 56, 63, 1),
+        backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
         body: Container(
-          color: Color.fromRGBO(4, 56, 63, 1),
+          color: const Color.fromRGBO(4, 56, 63, 1),
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           child: Column(children: [
