@@ -43,11 +43,10 @@ class _TermosUsoState extends State<TermosUso> {
             Text(
               'Termos de Uso do Aplicativo Diogo Farm’s',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 19,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
-              textAlign: TextAlign.center,
             ),
             SizedBox(height: 24),
             Text(
@@ -60,13 +59,11 @@ class _TermosUsoState extends State<TermosUso> {
             ),
             SizedBox(height: 8),
             Text(
-              'Ao acessar e utilizar o aplicativo Diogo Farm’s, você concorda em cumprir com estes Termos de Uso.'
-              'Recomendamos que leia atentamente cada seção, pois o uso continuado do app implica na aceitação integral das condições aqui descritas.',
+              'Ao acessar e utilizar o aplicativo Diogo Farm’s, você concorda em cumprir com estes Termos de Uso. Recomendamos que leia atentamente cada seção, pois o uso continuado do app implica na aceitação integral das condições aqui descritas.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
               ),
-              textAlign: TextAlign.center,
             ),
             SizedBox(height: 24),
             Text(
@@ -79,8 +76,7 @@ class _TermosUsoState extends State<TermosUso> {
             ),
             SizedBox(height: 8),
             Text(
-              'O Diogo Farm’s é um aplicativo que oferece produtos orgânicos cultivados em ambiente urbano, proporcionando ao usuário uma forma prática de adquirir alimentos frescos e saudáveis. '
-              'Todos os produtos são cultivados sob supervisão rigorosa para garantir qualidade e segurança.',
+              'O Diogo Farm’s é um aplicativo que oferece produtos orgânicos cultivados em ambiente urbano, proporcionando ao usuário uma forma prática de adquirir alimentos frescos e saudáveis. Todos os produtos são cultivados sob supervisão rigorosa para garantir qualidade e segurança.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -97,8 +93,7 @@ class _TermosUsoState extends State<TermosUso> {
             ),
             SizedBox(height: 8),
             Text(
-              'Para utilizar determinados serviços, você poderá ser solicitado a criar uma conta, fornecendo dados como nome, endereço e informações de pagamento. '
-              'É de responsabilidade do usuário manter esses dados atualizados e corretos. Não nos responsabilizamos por informações desatualizadas ou incorretas fornecidas pelo usuário.',
+              'Para utilizar determinados serviços, você poderá ser solicitado a criar uma conta, fornecendo dados como nome, endereço e informações de pagamento. É de responsabilidade do usuário manter esses dados atualizados e corretos. Não nos responsabilizamos por informações desatualizadas ou incorretas fornecidas pelo usuário.',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -179,12 +174,11 @@ class _TermosUsoState extends State<TermosUso> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 8),
             Text(
-            ' Diogo Farm’s não se responsabiliza por atrasos, falhas de entrega causadas por terceiros ou qualquer situação fora de nosso controle direto. Nossa responsabilidade é limitada ao valor da transação em questão.',
+            'Diogo Farm’s não se responsabiliza por atrasos, falhas de entrega causadas por terceiros ou qualquer situação fora de nosso controle direto. Nossa responsabilidade é limitada ao valor da transação em questão.',
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: 16,
               color: Colors.white,
             ),
             ),
@@ -197,12 +191,11 @@ class _TermosUsoState extends State<TermosUso> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 8),
             Text(
               'Reservamo-nos o direito de atualizar estes Termos de Uso periodicamente. Notificaremos os usuários sobre quaisquer alterações significativas. O uso contínuo do app após tais alterações implicará na aceitação dos novos termos.',
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
