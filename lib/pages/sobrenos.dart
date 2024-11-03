@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Sobre extends StatefulWidget {
-  const Sobre({super.key});
+class SobreNos extends StatefulWidget {
+  const SobreNos({super.key});
 
   @override
-  State<Sobre> createState() => _SobreNosState();
+  State<SobreNos> createState() => _SobreNosState();
 }
 
-class _SobreNosState extends State<Sobre> {
+class _SobreNosState extends State<SobreNos> {
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
 
   @override
