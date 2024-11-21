@@ -1,7 +1,5 @@
-import 'dart:ffi';
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:teste/functions/criadorCard.dart';
 
 class Produtos extends StatefulWidget {

@@ -3,9 +3,10 @@ import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
 import 'package:teste/pages/menu.dart';
+import 'package:teste/pages/navegar.dart';
 import 'package:teste/pages/perfil.dart';
-import 'package:teste/pages/sobrenos.dart';
-import 'package:teste/pages/termosuso.dart';
+import 'package:teste/pages/sobre-nos.dart';
+import 'package:teste/pages/termos-uso.dart';
 
 void trocarPagina(BuildContext context, String pagina) {
   Widget page;
@@ -33,7 +34,7 @@ void trocarPagina(BuildContext context, String pagina) {
       Navigator.of(context).pushAndRemoveUntil(
         PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                const Login()),
+                const Navegar()),
         (Route<dynamic> route) => false,
       );
       return;

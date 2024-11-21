@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:teste/functions/API/clientes.dart';
+import 'package:teste/functions/API/logins.dart';
 import 'package:teste/functions/validarCPF.dart';
 
 class TelaDeCadastro extends StatefulWidget {
@@ -11,15 +15,16 @@ class TelaDeCadastro extends StatefulWidget {
 
 class _TelaDeCadastroState extends State<TelaDeCadastro> {
   bool _mostrarSenha = true;
-  bool _mostrarConfirmarSenha = true;
   final mascaraTelefone = MaskedTextController(mask: '(00) 00000-0000');
   final mascaraCPF = MaskedTextController(mask: '000.000.000-00');
 
+  final apiClientes = ApiClientes();
+  final apiLogins = ApiLogins();
+
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
-  final TextEditingController _confirmarSenhaController =
-      TextEditingController();
 
   void _toggleSenha() {
     setState(() {
@@ -27,16 +32,67 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
     });
   }
 
-  void _toggleConfirmarSenha() {
-    setState(() {
-      _mostrarConfirmarSenha = !_mostrarConfirmarSenha;
-    });
+  // Função para mostrar o pop-up
+  void _mostrarDialog(String mensagem, {bool isError = false}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(isError ? 'Erro' : 'Sucesso'),
+          content: Text(mensagem),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (!isError) {
+                  Navigator.of(context).pop();
+                }
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  void _validarFormulario() {
+  void _validarFormulario() async {
     if (_formKey.currentState!.validate()) {
-      // Ação após validação bem-sucedida
-      print('Cadastro realizado com sucesso!');
+      try {
+        final cliente = {
+          "CPF": mascaraCPF.text.replaceAll(RegExp(r'[^\d]'), ''),
+          "NOME": _nomeController.text,
+          "TELEFONE": mascaraTelefone.text.replaceAll(RegExp(r'[^\d]'), ''),
+        };
+
+        final clienteResponse = await apiClientes.adicionarCliente(cliente);
+
+        if (clienteResponse.statusCode == 201) {
+          final login = {
+            "CPF": mascaraCPF.text.replaceAll(RegExp(r'[^\d]'), ''),
+            "SENHA": _senhaController.text,
+            "STATUS": 1,
+            "EMAIL": _emailController.text,
+          };
+
+          final loginResponse = await apiLogins.criarLogin(login);
+
+          if (loginResponse.statusCode == 201) {
+            _mostrarDialog(
+                'Usuário cadastrado com sucesso! Por favor, faça o login.',
+                isError: false);
+          } else {
+            print(jsonDecode(loginResponse.body));
+            _mostrarDialog('Erro ao criar login, tente novamente!',
+                isError: true);
+          }
+        } else {
+          _mostrarDialog('Cliente já cadastrado!', isError: true);
+        }
+      } catch (e) {
+        // Exibe o pop-up de erro em caso de exceção
+        _mostrarDialog('Erro durante o cadastro: $e', isError: true);
+      }
     }
   }
 
@@ -64,7 +120,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 65),
+              const SizedBox(height: 50),
               TextFormField(
                 controller: _nomeController,
                 maxLength: 30,
@@ -90,6 +146,39 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Digite seu nome completo';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  labelText: 'E-mail',
+                  labelStyle: TextStyle(color: Colors.white),
+                  filled: true,
+                  fillColor: Colors.white10,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+                ),
+                style: const TextStyle(color: Colors.white),
+                cursorColor: Colors.white,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Digite seu e-mail';
+                  }
+                  if (!RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$')
+                      .hasMatch(value)) {
+                    return 'Digite um e-mail válido';
                   }
                   return null;
                 },
@@ -180,62 +269,19 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                   ),
                   contentPadding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _mostrarSenha ? Icons.visibility : Icons.visibility_off,
+                  suffixIcon: GestureDetector(
+                    onTap: _toggleSenha,
+                    child: Icon(
+                      _mostrarSenha ? Icons.visibility_off : Icons.visibility,
                       color: Colors.white,
                     ),
-                    onPressed: _toggleSenha,
                   ),
                 ),
                 style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Digite uma senha';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _confirmarSenhaController,
-                obscureText: _mostrarConfirmarSenha,
-                maxLength: 100,
-                decoration: InputDecoration(
-                  counterText: '',
-                  labelText: 'Confirmar Senha',
-                  labelStyle: const TextStyle(color: Colors.white),
-                  filled: true,
-                  fillColor: Colors.white10,
-                  border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide.none,
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _mostrarConfirmarSenha
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: Colors.white,
-                    ),
-                    onPressed: _toggleConfirmarSenha,
-                  ),
-                ),
-                style: const TextStyle(color: Colors.white),
-                cursorColor: Colors.white,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Confirme sua senha';
-                  }
-                  if (value != _senhaController.text) {
-                    return 'As senhas não coincidem';
+                    return 'Digite sua senha';
                   }
                   return null;
                 },
@@ -245,7 +291,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 onPressed: _validarFormulario,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -259,7 +305,6 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
             ],
           ),
         ),

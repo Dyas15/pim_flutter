@@ -2,7 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:teste/pages/carrinho.dart';
 import 'package:teste/pages/configuracao.dart';
-//import 'package:teste/pages/pesquisa.dart';
 import 'package:teste/pages/produtos.dart';
 
 
@@ -32,17 +31,12 @@ void initState() {
 }
 
   void _trocarPagina(int index) {
-  // Verifica se está passando da última para a primeira página
   if (_paginaAtual == _pageController.page!.round() && index == 0 && _paginaAtual == 2) {
-    // Navega para a primeira página sem "bugar"
     _pageController.jumpToPage(0);
   } 
-  // Verifica se está passando da primeira para a última página
   else if (_paginaAtual == _pageController.page!.round() && index == 2 && _paginaAtual == 0) {
-    // Navega para a última página sem "bugar"
     _pageController.jumpToPage(2);
   } else {
-    // Para as transições normais
     setState(() {
       _paginaAtual = index;
     });
@@ -77,7 +71,6 @@ void initState() {
             },
             children: const [
               Produtos(),
-              // Pesquisa(),
               Carrinho(),
               Configuracao(),
             ],
@@ -87,7 +80,6 @@ void initState() {
       bottomNavigationBar: CurvedNavigationBar(
         items: const [
           Icon(Icons.home),
-          // Icon(Icons.search_sharp),
           Icon(Icons.shopping_cart),
           Icon(Icons.settings_sharp),
         ],

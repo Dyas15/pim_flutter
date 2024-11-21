@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teste/functions/trocarPagina.dart';
+import 'package:teste/functions/configuracao.dart';
 
 class Configuracao extends StatelessWidget {
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
@@ -45,34 +45,23 @@ class Configuracao extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               children: [
-                _opcoesConfiguracao(context, Icons.person, 'Perfil', 'perfil'),
-                _opcoesConfiguracao(context, Icons.attach_money,
+                opcoesConfiguracao(context, Icons.person, 'Perfil', 'perfil'),
+                opcoesConfiguracao(context, Icons.attach_money,
                     'Formas de pagamento', 'formas_pagamento'),
-                _opcoesConfiguracao(context, Icons.date_range,
+                opcoesConfiguracao(context, Icons.date_range,
                     'Histórico de compras', 'historico_compras'),
-                _opcoesConfiguracao(
+                opcoesConfiguracao(
                     context, Icons.chat_bubble, 'Sobre Nós', 'sobre_nos'),
-                _opcoesConfiguracao(context, Icons.privacy_tip_rounded,
+                opcoesConfiguracao(context, Icons.privacy_tip_rounded,
                     'Termos de uso', 'termos_de_uso'),
-                _opcoesConfiguracao(
+                opcoesConfiguracao(
                     context, Icons.delete, 'Deletar Conta', 'deletar_conta'),
-                _opcoesConfiguracao(context, Icons.logout, 'Sair', 'sair'),
+                opcoesConfiguracao(context, Icons.logout, 'Sair', 'sair'),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-
-  ListTile _opcoesConfiguracao(
-      BuildContext context, IconData icon, String title, String page) {
-    return ListTile(
-      leading: Icon(icon, color: corBranca),
-      title: Text(title, style: const TextStyle(color: corBranca, fontSize: 18)),
-      onTap: () {
-        trocarPagina(context, page);
-      },
     );
   }
 }

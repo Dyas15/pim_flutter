@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:teste/functions/trocarPagina.dart';
 import 'package:teste/functions/validarCPF.dart';
+import 'package:teste/functions/API/logins.dart';
+import 'package:bcrypt/bcrypt.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -15,6 +18,7 @@ class _LoginState extends State<Login> {
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
   static const Color corBranca = Colors.white;
   final _usuarioController = MaskedTextController(mask: '000.000.000-00');
+  final apiLogins = ApiLogins();
 
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _senhaController = TextEditingController();
@@ -25,10 +29,60 @@ class _LoginState extends State<Login> {
     });
   }
 
-  void _validarFormulario() {
+  Future<void> _validarFormulario() async {
     if (_formKey.currentState!.validate()) {
-      trocarPagina(context, 'menu');
+      String cpf = _usuarioController.text.replaceAll(RegExp(r'[^\d]'), '');
+      String senha = _senhaController.text;
+
+      try {
+        final response = await apiLogins.obterLogin(cpf);
+
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body);
+
+          print(data);
+
+          if (data['SENHA'] != null &&
+              await _verificarSenha(senha, data['SENHA'])) {
+            trocarPagina(context, 'menu');
+          } else {
+            _mostrarErro('Senha incorreta!');
+          }
+        } else if (response.statusCode == 404) {
+          _mostrarErro('Usuário não encontrado!');
+        } else {
+          _mostrarErro('Erro ao fazer login. Tente novamente.');
+        }
+      } catch (e) {
+        _mostrarErro('Erro: $e');
+      }
     }
+  }
+
+  Future<bool> _verificarSenha(String senha, String senhaHash) async {
+    try {
+      return BCrypt.checkpw(senha, senhaHash);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  void _mostrarErro(String mensagem) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Erro'),
+          content: Text(mensagem),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
