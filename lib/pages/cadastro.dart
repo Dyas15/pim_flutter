@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:teste/functions/API/clientes.dart';
 import 'package:teste/functions/API/logins.dart';
+import 'package:teste/functions/configuracao.dart';
 import 'package:teste/functions/validarCPF.dart';
 
 class TelaDeCadastro extends StatefulWidget {
@@ -48,7 +49,10 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                   Navigator.of(context).pop();
                 }
               },
-              child: const Text('OK'),
+              child: const Text('OK', style: TextStyle(color: corPadrao),),
+              style: TextButton.styleFrom(
+                foregroundColor: corPadrao,
+                ),
             ),
           ],
         );
@@ -83,14 +87,15 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 isError: false);
           } else {
             print(jsonDecode(loginResponse.body));
+            await apiClientes.deletarCliente("{login['CPF']}");
             _mostrarDialog('Erro ao criar login, tente novamente!',
                 isError: true);
           }
         } else {
+          print(jsonDecode(clienteResponse.body));
           _mostrarDialog('Cliente já cadastrado!', isError: true);
         }
       } catch (e) {
-        // Exibe o pop-up de erro em caso de exceção
         _mostrarDialog('Erro durante o cadastro: $e', isError: true);
       }
     }
@@ -244,6 +249,8 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Digite seu número de telefone';
+                  } else if(value.length == 11){
+                    return 'Digite o número de telefone com 11 caracteres';
                   }
                   return null;
                 },
@@ -282,7 +289,9 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Digite sua senha';
-                  }
+                  } else if( value.length <=5){
+                    return 'Digite uma senha que tenha no mínimo 6 caracteres.';
+                  }               
                   return null;
                 },
               ),
@@ -290,6 +299,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
               ElevatedButton(
                 onPressed: _validarFormulario,
                 style: ElevatedButton.styleFrom(
+                foregroundColor: corPadrao,
                   backgroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
