@@ -17,7 +17,7 @@ class _LoginState extends State<Login> {
   bool _mostrarOlinho = true;
   static const Color corPadrao = Color.fromRGBO(4, 56, 63, 1);
   static const Color corBranca = Colors.white;
-  final _cpfController = MaskedTextController(mask: '000.000.000-00');
+  final _usuarioController = MaskedTextController(mask: '000.000.000-00');
   final apiLogins = ApiLogins();
 
   final _formKey = GlobalKey<FormState>();
@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
 
   Future<void> _validarFormulario() async {
     if (_formKey.currentState!.validate()) {
-      String cpf = _cpfController.text.replaceAll(RegExp(r'[^\d]'), '');
+      String cpf = _usuarioController.text.replaceAll(RegExp(r'[^\d]'), '');
       String senha = _senhaController.text;
 
       try {
@@ -51,7 +51,6 @@ class _LoginState extends State<Login> {
         } else if (response.statusCode == 404) {
           _mostrarErro('Usuário não encontrado!');
         } else {
-          print(jsonDecode(response.body));
           _mostrarErro('Erro ao fazer login. Tente novamente.');
         }
       } catch (e) {
@@ -105,7 +104,7 @@ class _LoginState extends State<Login> {
               children: [
                 Image.asset('images/logo_pequena.png', fit: BoxFit.fill),
                 TextFormField(
-                  controller: _cpfController,
+                  controller: _usuarioController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.person),
                     prefixIconColor: corBranca,
