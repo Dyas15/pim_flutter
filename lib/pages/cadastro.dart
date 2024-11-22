@@ -83,6 +83,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 isError: false);
           } else {
             print(jsonDecode(loginResponse.body));
+            //await apiClientes.deletarCliente("{login['CPF']}");
             _mostrarDialog('Erro ao criar login, tente novamente!',
                 isError: true);
           }
@@ -90,7 +91,6 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
           _mostrarDialog('Cliente já cadastrado!', isError: true);
         }
       } catch (e) {
-        // Exibe o pop-up de erro em caso de exceção
         _mostrarDialog('Erro durante o cadastro: $e', isError: true);
       }
     }
