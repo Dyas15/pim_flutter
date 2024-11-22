@@ -33,7 +33,7 @@ class _SobreNosState extends State<SobreNos> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Divider(
+            const Divider(
               color: Colors.white,
               thickness: 1,
             ),

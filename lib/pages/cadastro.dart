@@ -87,7 +87,7 @@ class _TelaDeCadastroState extends State<TelaDeCadastro> {
                 isError: false);
           } else {
             print(jsonDecode(loginResponse.body));
-            await apiClientes.deletarCliente("{login['CPF']}");
+            //await apiClientes.deletarCliente("{login['CPF']}");
             _mostrarDialog('Erro ao criar login, tente novamente!',
                 isError: true);
           }
