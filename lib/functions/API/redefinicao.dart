@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiRedefinicao {
+  //final String baseUrl = 'http://192.168.1.8:8000/api/redefinicao/enviar';
   final String baseUrl = 'http://10.0.2.2:8000/api/redefinicao/enviar';
 
   Future<http.Response> enviarRedefinicao(Map<String, dynamic> dados) async {
