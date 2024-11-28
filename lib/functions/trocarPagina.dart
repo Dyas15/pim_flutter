@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:teste/pages/Login.dart';
 import 'package:teste/pages/cadastro.dart';
 import 'package:teste/pages/esqueci-a-senha.dart';
+import 'package:teste/pages/forma-pagamento.dart';
+import 'package:teste/pages/historico_compra.dart';
 import 'package:teste/pages/menu.dart';
 import 'package:teste/pages/navegar.dart';
 import 'package:teste/pages/perfil.dart';
@@ -29,6 +31,12 @@ void trocarPagina(BuildContext context, String pagina) {
       break;
       case 'termos_de_uso':
       page = const TermosUso();
+      break;
+      case 'historico_compras':
+      page = const HistoricoCompra();
+      break;
+      case 'formas_pagamento':
+      page = const FormasPagamento();
       break;
     case 'sair':
       Navigator.of(context).pushAndRemoveUntil(
