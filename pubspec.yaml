@@ -42,6 +42,7 @@ dependencies:
   http: ^1.2.2
   bcrypt: ^1.1.3
   font_awesome_flutter: ^10.8.0
+  shared_preferences: ^2.3.3
 
 
 flutter_native_splash:

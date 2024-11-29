@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:anim_search_bar/anim_search_bar.dart';
 
 class HistoricoCompra extends StatefulWidget {
-  const HistoricoCompra({Key? key}) : super(key: key);
+  const HistoricoCompra({super.key});
 
   @override
   State<HistoricoCompra> createState() => _HistoricoCompraState();
@@ -32,11 +31,15 @@ class _HistoricoCompraState extends State<HistoricoCompra> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(4, 56, 63, 1), // Cor do background principal
+      backgroundColor:
+          const Color.fromRGBO(4, 56, 63, 1), // Cor do background principal
       appBar: AppBar(
-        title: const Text('Histórico de compras', style: TextStyle(color: Colors.white),),
+        title: const Text(
+          'Histórico de compras',
+          style: TextStyle(color: Colors.white),
+        ),
         backgroundColor: const Color.fromRGBO(4, 56, 63, 1), // Cor do AppBar
-         iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Container(
         color: const Color.fromRGBO(4, 56, 63, 1), // Cor do Container principal
@@ -53,7 +56,9 @@ class _HistoricoCompraState extends State<HistoricoCompra> {
                       ? const Center(
                           child: Text(
                             'Nenhum pedido encontrado',
-                            style: TextStyle(color: Colors.white), // Texto visível no fundo escuro
+                            style: TextStyle(
+                                color: Colors
+                                    .white), // Texto visível no fundo escuro
                           ),
                         )
                       : ListView.separated(
@@ -65,21 +70,26 @@ class _HistoricoCompraState extends State<HistoricoCompra> {
                           itemBuilder: (_, index) {
                             final pedido = pedidosFiltrados[index];
                             return Card(
-                              color: const Color.fromRGBO(4, 56, 63, 1), // Fundo do Card
+                              color: const Color.fromRGBO(
+                                  4, 56, 63, 1), // Fundo do Card
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: ListTile(
                                 title: Text(
                                   'Pedido ${pedido['id']}',
-                                  style: const TextStyle(color: Colors.white), // Cor do texto
+                                  style: const TextStyle(
+                                      color: Colors.white), // Cor do texto
                                 ),
                                 subtitle: Text(
                                   'Status: ${pedido['status']}',
-                                  style: const TextStyle(color: Colors.white), // Cor do texto
+                                  style: const TextStyle(
+                                      color: Colors.white), // Cor do texto
                                 ),
                                 trailing: IconButton(
-                                  icon: const Icon(Icons.more_vert, color: Colors.white), // Ícone com cor branca
+                                  icon: const Icon(Icons.more_vert,
+                                      color:
+                                          Colors.white), // Ícone com cor branca
                                   onPressed: () {
                                     // Exibe detalhes do pedido (adapte conforme necessário)
                                     showDialog(
@@ -90,12 +100,14 @@ class _HistoricoCompraState extends State<HistoricoCompra> {
                                         title: Text(
                                           'Detalhes do Pedido ${pedido['id']}',
                                           style: const TextStyle(
-                                              color: Colors.white), // Cor do título
+                                              color: Colors
+                                                  .white), // Cor do título
                                         ),
                                         content: Text(
                                           'Status: ${pedido['status']}\nItens: ${pedido['items'].length}',
                                           style: const TextStyle(
-                                              color: Colors.white), // Cor do conteúdo
+                                              color: Colors
+                                                  .white), // Cor do conteúdo
                                         ),
                                       ),
                                     );

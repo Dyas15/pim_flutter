@@ -8,7 +8,7 @@ class ApiClientes {
   // Obter cliente por CPF
   Future<http.Response> obterClientePorCPF(String cpf) async {
     try {
-      final url = '$baseUrl$cpf';
+      final url = '$baseUrl/$cpf';
       final response = await http.get(Uri.parse(url));
       return response;
     } catch (e) {
@@ -33,7 +33,7 @@ class ApiClientes {
   // Atualizar cliente por CPF
   Future<http.Response> atualizarCliente(String cpf, Map<String, dynamic> cliente) async {
     try {
-      final url = '$baseUrl$cpf';
+      final url = '$baseUrl/$cpf';
       final response = await http.put(
         Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
@@ -48,7 +48,7 @@ class ApiClientes {
   // Deletar cliente por CPF
   Future<http.Response> deletarCliente(String cpf) async {
     try {
-      final url = '$baseUrl$cpf';
+      final url = '$baseUrl/$cpf';
       final response = await http.delete(Uri.parse(url));
       return response;
     } catch (e) {

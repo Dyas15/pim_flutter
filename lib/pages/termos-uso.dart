@@ -67,7 +67,8 @@ class _TermosUsoState extends State<TermosUso> {
               'O usuário poderá realizar compras através do app, conforme a disponibilidade de produtos. Pagamentos serão processados por meio das plataformas integradas ao aplicativo, e será fornecido um comprovante digital. Em caso de cancelamentos e reembolsos, consulte nossa política específica para cada tipo de compra.',
             ),
             const SizedBox(height: 24),
-            _titulo('5. Coleta e Tratamento de Dados Pessoais - Conformidade com a LGPD'),
+            _titulo(
+                '5. Coleta e Tratamento de Dados Pessoais - Conformidade com a LGPD'),
             _conteudo(
               'Estamos comprometidos com a proteção dos dados pessoais dos nossos usuários em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD). Adotamos medidas de segurança apropriadas para proteger seus dados pessoais contra acessos não autorizados, perda, alteração ou destruição.',
             ),

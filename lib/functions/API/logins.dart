@@ -31,9 +31,9 @@ class ApiLogins {
   }
 
   // Função para PUT
-  Future<http.Response> atualizarCliente(int id, Map<String, dynamic> data) async {
+  Future<http.Response> atualizarLogin(String cpf, Map<String, dynamic> data) async {
     try {
-      final url = '$baseUrl/$id';
+      final url = '$baseUrl/$cpf';
       final response = await http.put(
         Uri.parse(url),
         headers: {'Content-Type': 'application/json'},
@@ -46,9 +46,9 @@ class ApiLogins {
   }
 
   // Função para DELETE
-  Future<http.Response> deletarCliente(int id) async {
+  Future<http.Response> deletarLogin(String cpf) async {
     try {
-      final url = '$baseUrl/$id';
+      final url = '$baseUrl/$cpf';
       final response = await http.delete(Uri.parse(url));
       return response;
     } catch (e) {

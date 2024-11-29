@@ -17,7 +17,7 @@ class CarrinhoItem {
 }
 
 class FormasPagamento extends StatefulWidget {
-  const FormasPagamento({Key? key}) : super(key: key);
+  const FormasPagamento({super.key});
 
   @override
   State<FormasPagamento> createState() => _FormasPagamentoState();
@@ -82,7 +82,7 @@ class _FormasPagamentoState extends State<FormasPagamento> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text('Carrinho', style: TextStyle(color: Colors.white)),
         centerTitle: true,
         backgroundColor: const Color.fromRGBO(4, 56, 63, 1),
