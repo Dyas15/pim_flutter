@@ -12,6 +12,141 @@ class _CarrinhoState extends State<Carrinho> {
   static const Color corBranca = Colors.white;
   static const Color corBotaoFinalizar = Colors.white;
 
+  // Lista de itens do carrinho
+  final List<Map<String, dynamic>> _itensCarrinho = [
+    {"nome": "Alface", "preco": 15.0, "quantidade": 1},
+    {"nome": "Cenoura", "preco": 10.0, "quantidade": 2},
+    {"nome": "Tomate", "preco": 20.0, "quantidade": 1},
+  ];
+
+  // Calcula o total do carrinho
+  double _calcularTotal() {
+    return _itensCarrinho.fold(
+      0.0,
+      (soma, item) => soma + (item["preco"] * item["quantidade"]),
+    );
+  }
+
+  // Remove um item do carrinho
+  void _removerItem(int index) {
+    setState(() {
+      _itensCarrinho.removeAt(index);
+    });
+  }
+
+  // Mostra opções de pagamento
+  void _mostrarOpcoesPagamento() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Escolha o método de pagamento',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+        content: const Text('Selecione como deseja pagar:'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              _mostrarFormularioCartao();
+            },
+            child: const Text('Cartão', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Pagamento em Dinheiro', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+                  content: const Text(
+                      'Aguardaremos o pagamento em dinheiro na entrega.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Fechar', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+                    ),
+                  ],
+                ),
+              );
+            },
+            child: const Text('Dinheiro', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Mostra formulário de cartão
+  void _mostrarFormularioCartao() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Pagamento com Cartão',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Número do Cartão',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Nome no Cartão',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Validade (MM/AA)',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.datetime,
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Código de Segurança (CVV)',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+                obscureText: true,
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar',style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('Pagamento Confirmado!'),
+                  content: const Text('Compra realizada com sucesso.'),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Fechar', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1))),
+                    ),
+                  ],
+                ),
+              );
+            },
+            child: const Text('Confirmar', style: TextStyle(color: Color.fromRGBO(4, 56, 63, 1)),),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,181 +166,54 @@ class _CarrinhoState extends State<Carrinho> {
       ),
       body: Stack(
         children: [
-          ListView(
+          ListView.builder(
             padding: const EdgeInsets.all(13.0),
-            children: [
-              const Divider(
-                  color: Colors.white,
-                  thickness: 1,
-                  indent: 10,
-                  endIndent: 10), // Ajuste do tamanho
-              Card(
+            itemCount: _itensCarrinho.length,
+            itemBuilder: (context, index) {
+              final item = _itensCarrinho[index];
+              return Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png',
-                      width: 50, height: 50),
-                  title: const Text(
-                    'Alface',
-                    style: TextStyle(
-                        color: corPadrao, fontWeight: FontWeight.bold),
+                  leading: Image.asset(
+                    'images/logo_pequena.png',
+                    width: 50,
+                    height: 50,
                   ),
-                  subtitle: const Column(
+                  title: Text(
+                    item["nome"],
+                    style: const TextStyle(
+                      color: corPadrao,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00',
-                          style: TextStyle(color: corPadrao)),
-                      SizedBox(height: 5),
-                      Text('Quantidade: 1',
-                          style: TextStyle(
-                              color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text(
+                        'Preço: R\$ ${item["preco"].toStringAsFixed(2)}',
+                        style: const TextStyle(color: corPadrao),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        'Quantidade: ${item["quantidade"]}',
+                        style: const TextStyle(
+                          color: Color.fromRGBO(4, 56, 63, 1),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      // Ação de remover item
-                    },
+                    onPressed: () => _removerItem(index),
                   ),
                 ),
-              ),
-              Card(
-                color: corBranca,
-                margin: const EdgeInsets.symmetric(vertical: 10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png',
-                      width: 50, height: 50),
-                  title: const Text(
-                    'Alface',
-                    style: TextStyle(
-                        color: corPadrao, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Preço: R\$ 15,00',
-                          style: TextStyle(color: corPadrao)),
-                      SizedBox(height: 5),
-                      Text('Quantidade: 1',
-                          style: TextStyle(
-                              color: corPadrao, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      // Ação de remover item
-                    },
-                  ),
-                ),
-              ),
-              Card(
-                color: corBranca,
-                margin: const EdgeInsets.symmetric(vertical: 10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png',
-                      width: 50, height: 50),
-                  title: const Text(
-                    'Alface',
-                    style: TextStyle(
-                        color: corPadrao, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Preço: R\$ 15,00',
-                          style: TextStyle(color: corPadrao)),
-                      SizedBox(height: 5),
-                      Text('Quantidade: 1',
-                          style: TextStyle(
-                              color: corPadrao, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      // Ação de remover item
-                    },
-                  ),
-                ),
-              ),
-              Card(
-                color: corBranca,
-                margin: const EdgeInsets.symmetric(vertical: 10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png',
-                      width: 50, height: 50),
-                  title: const Text(
-                    'Alface',
-                    style: TextStyle(
-                        color: corPadrao, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Preço: R\$ 15,00',
-                          style: TextStyle(color: corPadrao)),
-                      SizedBox(height: 5),
-                      Text('Quantidade: 1',
-                          style: TextStyle(
-                              color: corPadrao, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      // Ação de remover item
-                    },
-                  ),
-                ),
-              ),
-              Card(
-                color: corBranca,
-                margin: const EdgeInsets.symmetric(vertical: 10.0),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png',
-                      width: 50, height: 50),
-                  title: const Text(
-                    'Alface',
-                    style: TextStyle(
-                        color: corPadrao, fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Preço: R\$ 15,00',
-                          style: TextStyle(color: corPadrao)),
-                      SizedBox(height: 5),
-                      Text('Quantidade: 1',
-                          style: TextStyle(
-                              color: corPadrao, fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
-                    onPressed: () {
-                      // Ação de remover item
-                    },
-                  ),
-                ),
-              ),
-              const SizedBox(height: 100),
-            ],
+              );
+            },
           ),
           Positioned(
             bottom: 0,
@@ -213,13 +221,13 @@ class _CarrinhoState extends State<Carrinho> {
             right: 0,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              color: corPadrao,
+              color:Color.fromRGBO(4, 56, 63, 1),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Text(
-                    'Total: R\$ 170.0',
-                    style: TextStyle(
+                  Text(
+                    'Total: R\$ ${_calcularTotal().toStringAsFixed(2)}',
+                    style: const TextStyle(
                       color: corBranca,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -235,12 +243,10 @@ class _CarrinhoState extends State<Carrinho> {
                       ),
                       minimumSize: const Size(double.infinity, 50),
                     ),
-                    onPressed: () {
-                      // Ação de finalizar compra
-                    },
+                    onPressed: _mostrarOpcoesPagamento,
                     child: const Text(
                       'Finalizar Compra',
-                      style: TextStyle(fontSize: 19, color: corPadrao),
+                      style: TextStyle(fontSize: 19, color: Color.fromRGBO(4, 56, 63, 1)),
                     ),
                   ),
                 ],
