@@ -4,8 +4,6 @@ import 'package:teste/pages/carrinho.dart';
 import 'package:teste/pages/configuracao.dart';
 import 'package:teste/pages/produtos.dart';
 
-
-
 class Menu extends StatefulWidget {
   const Menu({super.key});
 
@@ -20,35 +18,40 @@ class _MenuState extends State<Menu> with TickerProviderStateMixin {
   late Animation<double> _animation;
 
   @override
-void initState() {
-  super.initState();
-  _paginaAtual = 0;
-  _animacaoController = AnimationController(
-    duration: const Duration(milliseconds: 300),
-    vsync: this,
-  );
-  _animation = Tween<double>(begin: 1.0, end: 1.0).animate(_animacaoController);
-}
+  void initState() {
+    super.initState();
+    _paginaAtual = 0;
+    _animacaoController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation =
+        Tween<double>(begin: 1.0, end: 1.0).animate(_animacaoController);
+  }
 
   void _trocarPagina(int index) {
-  if (_paginaAtual == _pageController.page!.round() && index == 0 && _paginaAtual == 2) {
-    _pageController.jumpToPage(0);
-  } 
-  else if (_paginaAtual == _pageController.page!.round() && index == 2 && _paginaAtual == 0) {
-    _pageController.jumpToPage(2);
-  } else {
-    setState(() {
-      _paginaAtual = index;
-    });
-    _animacaoController.forward(from: 0.0).then((_) {
-      _pageController.animateToPage(
-        index,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    });
+    if (_paginaAtual == _pageController.page!.round() &&
+        index == 0 &&
+        _paginaAtual == 2) {
+      _pageController.jumpToPage(0);
+    } else if (_paginaAtual == _pageController.page!.round() &&
+        index == 2 &&
+        _paginaAtual == 0) {
+      _pageController.jumpToPage(2);
+    } else {
+      setState(() {
+        _paginaAtual = index;
+      });
+      _animacaoController.forward(from: 0.0).then((_) {
+        _pageController.animateToPage(
+          index,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      });
+    }
   }
-}
+
   @override
   void dispose() {
     _animacaoController.dispose();
@@ -61,7 +64,7 @@ void initState() {
       body: Container(
         color: const Color.fromRGBO(4, 56, 63, 1),
         child: FadeTransition(
-          opacity: _animation ,
+          opacity: _animation,
           child: PageView(
             controller: _pageController,
             onPageChanged: (index) {

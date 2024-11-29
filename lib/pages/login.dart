@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
+import 'package:provider/provider.dart';
+import 'package:teste/Provider/salvar.dart';
 import 'package:teste/functions/trocarPagina.dart';
 import 'package:teste/functions/validarCPF.dart';
 import 'package:teste/functions/API/logins.dart';
@@ -40,16 +43,18 @@ class _LoginState extends State<Login> {
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
 
-          print(data);
-
           if (data['SENHA'] != null &&
               await _verificarSenha(senha, data['SENHA'])) {
+            final loginProvider =
+                Provider.of<LoginProvider>(context, listen: false);
+            await loginProvider.salvarLogin(cpf);
             trocarPagina(context, 'menu');
           } else {
             _mostrarErro('Senha incorreta!', 'Atenção!');
           }
         } else if (response.statusCode == 404) {
-          _mostrarErro('Usuário não encontrado! Faça o cadastro no aplicativo.', 'Atenção!');
+          _mostrarErro('Usuário não encontrado! Faça o cadastro no aplicativo.',
+              'Atenção!');
         } else {
           print(jsonDecode(response.body));
           _mostrarErro('Erro ao fazer login. Tente novamente.', 'Atenção!');
@@ -78,9 +83,12 @@ class _LoginState extends State<Login> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK', style: TextStyle(color: corPadrao),),
               style: TextButton.styleFrom(
                 foregroundColor: corPadrao,
+              ),
+              child: const Text(
+                'OK',
+                style: TextStyle(color: corPadrao),
               ),
             ),
           ],
@@ -126,6 +134,8 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   style: const TextStyle(color: corBranca),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Digite o CPF!';

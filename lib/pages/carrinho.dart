@@ -34,7 +34,11 @@ class _CarrinhoState extends State<Carrinho> {
           ListView(
             padding: const EdgeInsets.all(13.0),
             children: [
-              const Divider(color: Colors.white, thickness: 1, indent: 10, endIndent: 10), // Ajuste do tamanho
+              const Divider(
+                  color: Colors.white,
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 10), // Ajuste do tamanho
               Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -42,17 +46,22 @@ class _CarrinhoState extends State<Carrinho> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png', width: 50, height: 50),
+                  leading: Image.asset('images/logo_pequena.png',
+                      width: 50, height: 50),
                   title: const Text(
                     'Alface',
-                    style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: corPadrao, fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00', style: TextStyle(color: corPadrao)),
+                      Text('Preço: R\$ 15,00',
+                          style: TextStyle(color: corPadrao)),
                       SizedBox(height: 5),
-                      Text('Quantidade: 1', style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text('Quantidade: 1',
+                          style: TextStyle(
+                              color: corPadrao, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   trailing: IconButton(
@@ -62,7 +71,7 @@ class _CarrinhoState extends State<Carrinho> {
                     },
                   ),
                 ),
-              ), 
+              ),
               Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -70,17 +79,22 @@ class _CarrinhoState extends State<Carrinho> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png', width: 50, height: 50),
+                  leading: Image.asset('images/logo_pequena.png',
+                      width: 50, height: 50),
                   title: const Text(
                     'Alface',
-                    style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: corPadrao, fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00', style: TextStyle(color: corPadrao)),
+                      Text('Preço: R\$ 15,00',
+                          style: TextStyle(color: corPadrao)),
                       SizedBox(height: 5),
-                      Text('Quantidade: 1', style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text('Quantidade: 1',
+                          style: TextStyle(
+                              color: corPadrao, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   trailing: IconButton(
@@ -90,7 +104,7 @@ class _CarrinhoState extends State<Carrinho> {
                     },
                   ),
                 ),
-              ), 
+              ),
               Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -98,17 +112,22 @@ class _CarrinhoState extends State<Carrinho> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png', width: 50, height: 50),
+                  leading: Image.asset('images/logo_pequena.png',
+                      width: 50, height: 50),
                   title: const Text(
                     'Alface',
-                    style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: corPadrao, fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00', style: TextStyle(color: corPadrao)),
+                      Text('Preço: R\$ 15,00',
+                          style: TextStyle(color: corPadrao)),
                       SizedBox(height: 5),
-                      Text('Quantidade: 1', style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text('Quantidade: 1',
+                          style: TextStyle(
+                              color: corPadrao, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   trailing: IconButton(
@@ -118,7 +137,7 @@ class _CarrinhoState extends State<Carrinho> {
                     },
                   ),
                 ),
-              ), 
+              ),
               Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -126,17 +145,22 @@ class _CarrinhoState extends State<Carrinho> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png', width: 50, height: 50),
+                  leading: Image.asset('images/logo_pequena.png',
+                      width: 50, height: 50),
                   title: const Text(
                     'Alface',
-                    style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: corPadrao, fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00', style: TextStyle(color: corPadrao)),
+                      Text('Preço: R\$ 15,00',
+                          style: TextStyle(color: corPadrao)),
                       SizedBox(height: 5),
-                      Text('Quantidade: 1', style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text('Quantidade: 1',
+                          style: TextStyle(
+                              color: corPadrao, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   trailing: IconButton(
@@ -146,7 +170,7 @@ class _CarrinhoState extends State<Carrinho> {
                     },
                   ),
                 ),
-              ), 
+              ),
               Card(
                 color: corBranca,
                 margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -154,17 +178,22 @@ class _CarrinhoState extends State<Carrinho> {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: ListTile(
-                  leading: Image.asset('images/logo_pequena.png', width: 50, height: 50),
+                  leading: Image.asset('images/logo_pequena.png',
+                      width: 50, height: 50),
                   title: const Text(
                     'Alface',
-                    style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: corPadrao, fontWeight: FontWeight.bold),
                   ),
                   subtitle: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Preço: R\$ 15,00', style: TextStyle(color: corPadrao)),
+                      Text('Preço: R\$ 15,00',
+                          style: TextStyle(color: corPadrao)),
                       SizedBox(height: 5),
-                      Text('Quantidade: 1', style: TextStyle(color: corPadrao, fontWeight: FontWeight.bold)),
+                      Text('Quantidade: 1',
+                          style: TextStyle(
+                              color: corPadrao, fontWeight: FontWeight.bold)),
                     ],
                   ),
                   trailing: IconButton(
